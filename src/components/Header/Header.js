@@ -8,6 +8,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
 import ChatIcon from '@material-ui/icons/Chat'
 import NotificationsIcon from '@material-ui/icons/Notifications'
+import { LINKEDIN_LOGO, PROFILE_URL } from '../../utils/constants'
 
 
 function Header() {
@@ -15,10 +16,10 @@ function Header() {
     <div className='header'>
       
       <div className="header__left">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="" />
+        <img src={LINKEDIN_LOGO} alt="Linkedin" />
         <div className="header__search">
           <SearchIcon />
-          <input type="text" />
+          <input type="text" placeholder='Search' />
         </div>
       </div>
 
@@ -28,7 +29,7 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title='Jobs' />
         <HeaderOption Icon={ChatIcon} title='Messaging' />
         <HeaderOption Icon={NotificationsIcon} title='Notifications' />
-        <HeaderOption avatar='https://media-exp1.licdn.com/dms/image/C4E03AQGJ42BH2pZnZQ/profile-displayphoto-shrink_400_400/0/1644599247644?e=1665619200&v=beta&t=M8saeVId6Pxl21ySK7jQqOJVUJ6I4vMG7mD9u-Kb6tE' title='' />
+        <HeaderOption avatar={PROFILE_URL} title='Me' />
       </div>
     </div>
   )
