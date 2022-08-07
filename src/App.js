@@ -1,11 +1,9 @@
-import './App.css'
-import Header from './Header';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <div className="app">      
 
-      {/* Header */}
       <Header />
 
       {/* App Body */}
