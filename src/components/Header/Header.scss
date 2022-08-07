@@ -1,9 +1,9 @@
 .header {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-bottom: 0.1px solid lightgray;
   background-color: #fff;
-  padding: 10px 0;
+  padding: 10px 16%;
   width: 100%;
   position: sticky;
   top: 0;
@@ -20,7 +20,7 @@
     }
 
     .header__search{
-      padding: 10px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       border-radius: 5px;
@@ -38,5 +38,25 @@
 
   &__right {
     display: flex;
+  }
+}
+
+
+
+@media only screen and (max-width: 1800px) {
+  .header {
+    padding: 10px 10%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .header {
+    padding: 10px 5%;
+  }
+}
+
+@media only screen and (max-width: 1340px) {
+  .header {
+    padding: 10px 2%;
   }
 }

@@ -26,11 +26,29 @@ code {
 .app {
   background-color: #F3F2EF;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .app__body {
   display: flex;
+  justify-content: space-between;
+  padding: 0 16%;
+  margin-top: 32px;
+}
+
+@media only screen and (max-width: 1800px) {
+  .app__body {
+    padding: 0 10%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .app__body {
+    padding: 0 5%;
+  }
+}
+
+@media only screen and (max-width: 1340px) {
+  .app__body {
+    padding: 0 2%;
+  }
 }
