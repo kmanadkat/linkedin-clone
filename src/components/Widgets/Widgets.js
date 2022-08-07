@@ -2,7 +2,7 @@ import './Widgets.scss'
 
 const Widgets = () => {
   return (
-    <div className='widgets'>Widgets</div>
+    <div className='widgets'>Linkedin News</div>
   )
 }
 
