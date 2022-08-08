@@ -5,8 +5,13 @@ import CropOriginalIcon from '@material-ui/icons/CropOriginal';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import WebOutlinedIcon from '@material-ui/icons/WebOutlined';
+import Post from './Post';
+import { POSTS } from '../../utils/constants';
+import { useState } from 'react';
 
 const Feed = () => {
+  const [posts, setPosts] = useState(POSTS)
+
   return (
     <div className='feed'>
       <div className="feed__inputContainer">
@@ -26,6 +31,10 @@ const Feed = () => {
           <InputOption title="Write article" Icon={WebOutlinedIcon} color="#e16745" />
         </div>
       </div>
+
+      {/* Posts */}
+      {posts.map((post) => <Post key={post.id} {...post} />)}
+
     </div>
   )
 }
