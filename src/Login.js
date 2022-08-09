@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import login from './services/auth/login'
 import { LINKEDIN_LOGO_FULL } from './utils/constants'
-import { login as loginAction } from './features/userSlice'
 import signup from './services/auth/signup'
 
 const Login = () => {
-	const dispatch = useDispatch()
 	const [showSignup, setShowSignup] = useState(false)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -43,7 +40,6 @@ const Login = () => {
 		if (!user) {
 			console.log('Login Failed')
 		} else {
-			dispatch(loginAction(user))
 			_reset()
 		}
 	}
@@ -57,7 +53,6 @@ const Login = () => {
 		if (!user) {
 			console.log('Signup Failed')
 		} else {
-			dispatch(loginAction(user))
 			_reset()
 		}
 	}
