@@ -1,25 +1,54 @@
 import React from 'react'
 
-const SignupForm = ({ handleFormToggle }) => {
+const SignupForm = ({
+	handleFormToggle,
+	handleInput,
+	email,
+	password,
+	fullName,
+	profilePicUrl,
+	handleSubmit,
+}) => {
 	return (
 		<div className='login__form'>
 			<h1>Make the most of your professional life</h1>
 
-			<form>
+			<form autoComplete='off' onSubmit={handleSubmit}>
 				<div className='login__form__container'>
-					<label htmlFor='signupName'>Full Name</label>
-					<input id='signupName' type='text' required />
+					<label htmlFor='fullName'>Full Name</label>
+					<input
+						value={fullName}
+						id='fullName'
+						type='text'
+						onChange={handleInput}
+						required
+					/>
 
-					<label htmlFor='signupEmail'>Profile Photo URL (optional)</label>
-					<input id='signupEmail' type='url' />
+					<label htmlFor='profilePicUrl'>Profile Photo URL (optional)</label>
+					<input
+						value={profilePicUrl}
+						id='profilePicUrl'
+						type='text'
+						onChange={handleInput}
+					/>
 
-					<label htmlFor='signupEmail'>Email Id</label>
-					<input id='signupEmail' type='email' required />
+					<label htmlFor='email'>Email Id</label>
+					<input
+						value={email}
+						id='email'
+						type='email'
+						onChange={handleInput}
+						required
+					/>
 
-					<label htmlFor='signupPassword'>
-						Password (6 characters or more)
-					</label>
-					<input id='signupPassword' type='password' required />
+					<label htmlFor='password'>Password (6 characters or more)</label>
+					<input
+						value={password}
+						id='password'
+						type='password'
+						onChange={handleInput}
+						required
+					/>
 
 					<button type='submit'>Join now</button>
 					<p>
