@@ -7,7 +7,7 @@ const BANNER =
 
 const POSTS = [
 	{
-		id: '234sdfg',
+		key: '234sdfg',
 		name: 'Krupesh Anadkat',
 		description: 'Software Engineer @ Byjus',
 		message:
@@ -16,4 +16,44 @@ const POSTS = [
 	},
 ]
 
-export { PROFILE_URL, LINKEDIN_LOGO, LINKEDIN_LOGO_FULL, BANNER, POSTS }
+const WIDGETS = [
+	{
+		key: 'widget-1',
+		title: 'Hiring up in retail sector',
+		subtitle: '1d ago • 1,784 readers',
+		url: 'https://www.linkedin.com/news/story/hiring-up-in-retail-sector-5389028',
+	},
+	{
+		key: 'widget-2',
+		title: 'Big hikes in IT set to fade out',
+		subtitle: '12h ago • 10,704 readers',
+		url: 'https://www.linkedin.com/news/story/big-hikes-in-it-set-to-fade-out-4892625',
+	},
+	{
+		key: 'widget-3',
+		title: 'JP Morgan to hire 5,000',
+		subtitle: '6h ago • 55,315 readers',
+		url: 'https://www.linkedin.com/news/story/jp-morgan-to-hire-5000-4833089',
+	},
+	{
+		key: 'widget-4',
+		title: 'Uber rides out of Zomato',
+		subtitle: '1d ago • 11,003 readers',
+		url: 'https://www.linkedin.com/news/story/uber-rides-out-of-zomato-4879369',
+	},
+	{
+		key: 'widget-5',
+		title: 'WFH attracts more women to work',
+		subtitle: '1d ago • 16,588 readers',
+		url: 'https://www.linkedin.com/news/story/wfh-attracts-more-women-to-work-4878689',
+	},
+]
+
+export {
+	PROFILE_URL,
+	LINKEDIN_LOGO,
+	LINKEDIN_LOGO_FULL,
+	BANNER,
+	POSTS,
+	WIDGETS,
+}

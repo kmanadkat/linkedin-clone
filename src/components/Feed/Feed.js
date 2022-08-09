@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-
+import { useSelector } from 'react-redux'
+import FlipMove from 'react-flip-move'
 import CreateIcon from '@material-ui/icons/Create'
 import CropOriginalIcon from '@material-ui/icons/CropOriginal'
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions'
@@ -10,10 +11,9 @@ import InputOption from './InputOption'
 import Post from './Post'
 
 import { fetchRealtimeData } from '../../services/posts/retrieveData'
-import './Feed.scss'
 import { addPost } from '../../services/posts/addData'
-import { useSelector } from 'react-redux'
 import { selectUser } from '../../features/userSlice'
+import './Feed.scss'
 
 const Feed = () => {
 	const { displayName, email, photoURL } = useSelector(selectUser)
@@ -77,9 +77,11 @@ const Feed = () => {
 			</div>
 
 			{/* Posts */}
-			{posts.map((post) => (
-				<Post key={post.id} {...post} />
-			))}
+			<FlipMove>
+				{posts.map((post) => (
+					<Post key={post.id} {...post} />
+				))}
+			</FlipMove>
 		</div>
 	)
 }

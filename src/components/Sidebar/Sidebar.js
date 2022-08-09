@@ -18,7 +18,7 @@ const Sidebar = () => {
 			<div className='sidebar__top'>
 				<img src={BANNER} alt='' />
 				<Avatar src={photoURL} className='sidebar__avatar' sizes=''>
-					{displayName[0]}
+					{displayName?.[0]}
 				</Avatar>
 				<h2>{displayName}</h2>
 				<h4>{email}</h4>
