@@ -12,8 +12,11 @@ import Post from './Post'
 import { fetchRealtimeData } from '../../services/posts/retrieveData'
 import './Feed.scss'
 import { addPost } from '../../services/posts/addData'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../features/userSlice'
 
 const Feed = () => {
+	const { displayName, email, photoURL } = useSelector(selectUser)
 	const [newPostInput, setNewPostInput] = useState('')
 	const [posts, setPosts] = useState([])
 	const unsubscribeRef = useRef()
@@ -31,10 +34,10 @@ const Feed = () => {
 	const sendPost = (event) => {
 		event.preventDefault()
 		addPost({
-			name: 'Krupesh Anadkat',
-			description: 'Software Engineer @ Byjus',
+			name: displayName,
+			description: email,
 			message: newPostInput,
-			photoUrl: '/assets/profile-pic.png',
+			photoUrl: photoURL,
 		})
 		setNewPostInput('')
 	}

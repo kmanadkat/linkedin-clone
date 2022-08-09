@@ -8,7 +8,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
 import ChatIcon from '@material-ui/icons/Chat'
 import NotificationsIcon from '@material-ui/icons/Notifications'
-import { LINKEDIN_LOGO, PROFILE_URL } from '../../utils/constants'
+import { LINKEDIN_LOGO } from '../../utils/constants'
 import logout from '../../services/auth/logout'
 
 function Header() {
@@ -28,7 +28,7 @@ function Header() {
 				<HeaderOption Icon={BusinessCenterIcon} title='Jobs' />
 				<HeaderOption Icon={ChatIcon} title='Messaging' />
 				<HeaderOption Icon={NotificationsIcon} title='Notifications' />
-				<HeaderOption avatar={PROFILE_URL} title='Logout' onClick={logout} />
+				<HeaderOption title='Logout' onClick={logout} />
 			</div>
 		</div>
 	)
