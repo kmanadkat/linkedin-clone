@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Feed from './components/Feed/Feed'
 import Header from './components/Header/Header'
@@ -7,15 +7,19 @@ import Widgets from './components/Widgets/Widgets'
 import { selectUser } from './features/userSlice'
 import observer from './services/auth/observer'
 import Login from './Login'
+import Loading from './Loading'
 
 function App() {
 	// Check If User Loggedin
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
+	const [isLoaded, setIsLoaded] = useState(false)
 
 	useEffect(() => {
-		observer(dispatch)
+		observer(dispatch, setIsLoaded)
 	}, [dispatch])
+
+	if (!isLoaded) return <Loading />
 
 	if (!user) return <Login />
 

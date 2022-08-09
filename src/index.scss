@@ -138,3 +138,49 @@ code {
 		}
 	}
 }
+
+.loading {
+	min-height: 100%;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f3f2ef;
+
+	img {
+		margin-top: 10%;
+		height: 46px;
+	}
+
+	&__loader {
+		width: 130px;
+		height: 2px;
+		margin: 24px auto;
+		border-radius: 2px;
+		background-color: #d6cec2;
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__bluebar {
+		height: 100%;
+		width: 68px;
+		position: absolute;
+		transform: translate(-34px);
+		background-color: #0a66c2;
+		border-radius: 2px;
+		animation: initial-loading 1.5s ease infinite;
+	}
+}
+
+@keyframes initial-loading {
+	0% {
+		transform: translate(-34px);
+	}
+	50% {
+		transform: translate(96px);
+	}
+	to {
+		transform: translate(-34px);
+	}
+}
