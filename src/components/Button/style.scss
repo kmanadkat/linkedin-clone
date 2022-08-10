@@ -1,0 +1,45 @@
+button.btn-primary {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	outline: none;
+	border: none;
+	height: 48px;
+	width: 100%;
+	border-radius: 24px;
+	color: white;
+	background-color: #0a66c2;
+	font-weight: 600;
+	font-size: 17px;
+	margin-top: 12px;
+	cursor: pointer;
+	transition: all 0.25s ease-out;
+	&:hover {
+		background-color: #0a4e93;
+	}
+
+	&.busy {
+		cursor: no-drop;
+		background-color: #0a66c2;
+	}
+
+	.loader {
+		border: 3px solid transparent;
+		border-top: 3px solid white;
+		border-right: 3px solid white;
+		border-radius: 50%;
+		width: 24px;
+		height: 24px;
+		animation: spin 0.7s linear infinite;
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

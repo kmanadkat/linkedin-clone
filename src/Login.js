@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import login from './services/auth/login'
 import { LINKEDIN_LOGO_FULL } from './utils/constants'
 import signup from './services/auth/signup'
+import { signup as signupAction } from './features/userSlice'
 
 const Login = () => {
+	const dispatch = useDispatch()
 	const [showSignup, setShowSignup] = useState(false)
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [fullName, setFullName] = useState('')
 	const [profilePicUrl, setProfilePicUrl] = useState('')
+	const [buttonState, setButtonState] = useState('idle')
 
 	const handleInput = (e) => {
 		const { value, id } = e.target
@@ -36,9 +40,11 @@ const Login = () => {
 		e.preventDefault()
 		if (!email || !password) return
 
+		setButtonState('busy')
 		const user = await login(email, password)
 		if (!user) {
 			console.log('Login Failed')
+			setButtonState('idle')
 		} else {
 			_reset()
 		}
@@ -48,16 +54,24 @@ const Login = () => {
 		e.preventDefault()
 		if (!email || !password || !fullName) return
 
+		setButtonState('busy')
 		const user = await signup({ fullName, email, password, profilePicUrl })
-		console.log(user)
 		if (!user) {
 			console.log('Signup Failed')
+			setButtonState('idle')
 		} else {
+			dispatch(
+				signupAction({
+					displayName: fullName,
+					photoURL: profilePicUrl,
+				})
+			)
 			_reset()
 		}
 	}
 
 	const handleFormToggle = () => {
+		_reset()
 		setShowSignup((prev) => !prev)
 	}
 
@@ -73,6 +87,7 @@ const Login = () => {
 					email={email}
 					password={password}
 					handleSubmit={handleLogin}
+					buttonState={buttonState}
 				/>
 			)}
 			{showSignup && (
@@ -84,6 +99,7 @@ const Login = () => {
 					fullName={fullName}
 					profilePicUrl={profilePicUrl}
 					handleSubmit={handleSignup}
+					buttonState={buttonState}
 				/>
 			)}
 		</div>

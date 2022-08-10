@@ -1,5 +1,6 @@
 {
   "scm.diffDecorations": "none",
   "workbench.editor.decorations.colors": true,
-  "explorer.decorations.colors": false
+  "explorer.decorations.colors": false,
+  "editor.formatOnSave": true
 }

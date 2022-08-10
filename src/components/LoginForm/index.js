@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../Button/Button'
 
 const LoginForm = ({
 	handleFormToggle,
@@ -6,6 +7,7 @@ const LoginForm = ({
 	email,
 	password,
 	handleSubmit,
+	buttonState,
 }) => {
 	return (
 		<div className='login__form'>
@@ -31,7 +33,7 @@ const LoginForm = ({
 						required
 					/>
 
-					<button type='submit'>Sign in</button>
+					<Button label='Sign in' type='submit' state={buttonState} />
 					<p>
 						New to LinkedIn? <span onClick={handleFormToggle}>Join now</span>
 					</p>
