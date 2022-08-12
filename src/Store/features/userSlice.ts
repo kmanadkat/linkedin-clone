@@ -1,27 +1,36 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '..'
+import { Profile } from '../../Models/Profile'
 import { SignupPayload } from '../../Models/Signup'
 
-const initialState = { data: null }
+const initialState: Profile = {
+  id: '',
+  displayName: '',
+  photoURL: '',
+  email: '',
+  fetched: false,
+}
 
-export const userSlice = createSlice({
-	name: 'user',
-	initialState,
-	reducers: {
-		login: (state: { data: null }, action: PayloadAction<any>) => {
-			state.data = action.payload
-		},
-		logout: (state: { data: null }) => {
-			state.data = null
-		},
-		signup: (state: any, action: PayloadAction<SignupPayload>) => {
-			state.data = { ...state.data, ...action.payload }
-		},
-	},
+const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {
+    userSignup: (state: Profile, action: PayloadAction<SignupPayload>) => {
+      state.photoURL = action.payload.photoURL
+      state.displayName = action.payload.displayName
+    },
+    userLogin: (state: Profile, action: PayloadAction<Profile>) => {
+      state = { ...action.payload }
+    },
+    userLogout: (state: Profile) => {
+      state = { ...initialState }
+    },
+  },
 })
 
-export const { login, logout, signup } = userSlice.actions
+// Selector
+export const selectUser = (state: RootState) => state.user
 
-export const selectUser = (state: RootState) => state?.user?.data
-
+// Actions & Reducer
+export const { userLogin, userLogout, userSignup } = userSlice.actions
 export default userSlice.reducer
