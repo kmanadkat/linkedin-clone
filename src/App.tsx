@@ -1,11 +1,16 @@
-import { useSelector } from 'react-redux'
-import { selectUser } from './Store/features/userSlice'
+import Auth from './Routes/Auth'
+import Home from './Routes/Home'
+import Loading from './Routes/Loading'
+
+import useAuthentication from './Hooks/useAuthentication'
 
 const App = () => {
-  const user = useSelector(selectUser)
-  console.log(user)
+  const { userFetched, authLoading } = useAuthentication()
 
-  return <div>App</div>
+  if (authLoading) return <Loading />
+  else if (!userFetched) return <Auth />
+
+  return <Home />
 }
 
 export default App

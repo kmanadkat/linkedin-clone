@@ -20,10 +20,18 @@ const userSlice = createSlice({
       state.displayName = action.payload.displayName
     },
     userLogin: (state: Profile, action: PayloadAction<Profile>) => {
-      state = { ...action.payload }
+      state.id = action.payload.id
+      state.displayName = action.payload.displayName
+      state.photoURL = action.payload.photoURL
+      state.email = action.payload.email
+      state.fetched = action.payload.fetched
     },
     userLogout: (state: Profile) => {
-      state = { ...initialState }
+      state.id = ''
+      state.displayName = ''
+      state.photoURL = ''
+      state.email = ''
+      state.fetched = false
     },
   },
 })

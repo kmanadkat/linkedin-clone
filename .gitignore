@@ -23,5 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 src/firebase.js
+src/constants/firebaseConfig.ts
 .firebase
 js-archive/src/firebase.js
