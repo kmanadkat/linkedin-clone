@@ -9,6 +9,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import NavLink from './NavLink'
 
 import './Topbar.scss'
+import { logoutUser } from '../../Services/Auth.service'
 
 const Topbar = () => {
   return (
@@ -27,7 +28,7 @@ const Topbar = () => {
         <NavLink Icon={BusinessCenterIcon} title="Jobs" />
         <NavLink Icon={ChatIcon} title="Messaging" />
         <NavLink Icon={NotificationsIcon} title="Notifications" />
-        <NavLink title="Logout" onClick={() => {}} />
+        <NavLink title="Logout" onClick={logoutUser} />
       </div>
     </div>
   )

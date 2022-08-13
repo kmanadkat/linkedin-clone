@@ -1,7 +1,8 @@
 export type Post = {
-  key: string
+  id?: string
   displayName: string
   photoUrl: string
   subtitle: string
   message: string
+  createdAt?: { seconds: number }
 }

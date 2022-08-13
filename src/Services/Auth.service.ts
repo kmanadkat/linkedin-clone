@@ -1,5 +1,5 @@
 import { Dispatch } from '@reduxjs/toolkit'
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 
 import { auth } from './Firebase.service'
 import { userLogin, userLogout } from '../Store/features/userSlice'
@@ -22,4 +22,8 @@ export const authObserver = (dispatch: Dispatch, setIsLoading: Function) => {
       dispatch(userLogout())
     }
   })
+}
+
+export const logoutUser = async () => {
+  await signOut(auth)
 }

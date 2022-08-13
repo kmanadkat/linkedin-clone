@@ -13,7 +13,7 @@ export const BANNER =
 // Example Post
 export const POSTS: Post[] = [
   {
-    key: '234sdfg',
+    id: '234sdfg',
     displayName: 'Krupesh Anadkat',
     photoUrl: PROFILE_URL,
     subtitle: 'Software Engineer',

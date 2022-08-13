@@ -14,7 +14,6 @@ interface NavLinkProps {
 
 const NavLink = ({ Icon, title, onClick }: NavLinkProps) => {
   const { displayName, photoURL } = useSelector(selectUser)
-  console.log('photo', photoURL)
   return (
     <div className="navlink" onClick={onClick}>
       {Icon && <Icon className="navlink__icon" />}
