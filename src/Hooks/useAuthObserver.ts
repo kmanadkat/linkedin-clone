@@ -4,7 +4,7 @@ import { Profile } from '../Models/Profile'
 import { authObserver } from '../Services/Auth.service'
 import { selectUser } from '../Store/features/userSlice'
 
-const useAuthentication = () => {
+const useAuthObserver = () => {
   const user: Profile = useSelector(selectUser)
 
   const dispatch = useDispatch()
@@ -17,4 +17,4 @@ const useAuthentication = () => {
   return { userFetched: user.fetched, authLoading: isLoading }
 }
 
-export default useAuthentication
+export default useAuthObserver

@@ -1,42 +1,49 @@
-import React, { useState } from 'react'
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
+import useLogin from '../../Hooks/useLogin'
+import useSignup from '../../Hooks/useSignup'
+import { LINKEDIN_LOGO_FULL } from '../../Constants'
+import './index.scss'
+
 const Auth = () => {
-  const [showSignup, setShowSignup] = useState(false)
-  const [loginForm, setLoginForm] = useState({ email: '', password: '' })
-  const [signupForm, setSignupForm] = useState({
-    displayName: '',
-    photoUrl: '',
-    email: '',
-    password: '',
-  })
+  const { loginForm, loginBtnState, handleLoginInput, handleLoginSubmit } =
+    useLogin()
 
-  const handleLoginInput = (event: InputEvent) => {
-    const { name, value } = event.target as HTMLInputElement
-    setLoginForm((prev) => ({ ...prev, [name]: value }))
-  }
-  const handleLoginSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-  }
-  const handleLoginReset = () => {
-    setLoginForm({ email: '', password: '' })
-  }
+  const {
+    showSignup,
+    toggleForm,
+    signupForm,
+    handleSignupInput,
+    handleSignupSubmit,
+    signupBtnState,
+  } = useSignup()
 
-  const handleSignupInput = (event: InputEvent) => {
-    const { name, value } = event.target as HTMLInputElement
-    setSignupForm((prev) => ({ ...prev, [name]: value }))
-  }
-  const handleSignupSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-  }
-  const handleSignupReset = () => {
-    setSignupForm({ displayName: '', photoUrl: '', email: '', password: '' })
-  }
-
-  if (showSignup) return <SignupForm />
-
-  return <LoginForm />
+  return (
+    <div className="auth">
+      <div className="auth__header">
+        <img src={LINKEDIN_LOGO_FULL} alt="Linkedin Logo" />
+      </div>
+      {!showSignup && (
+        <LoginForm
+          handleFormToggle={toggleForm}
+          handleInput={handleLoginInput}
+          loginForm={loginForm}
+          handleSubmit={handleLoginSubmit}
+          buttonState={loginBtnState}
+        />
+      )}
+      {showSignup && (
+        <SignupForm
+          handleFormToggle={toggleForm}
+          handleInput={handleSignupInput}
+          signupForm={signupForm}
+          handleSubmit={handleSignupSubmit}
+          buttonState={signupBtnState}
+        />
+      )}
+    </div>
+  )
 }
 
 export default Auth

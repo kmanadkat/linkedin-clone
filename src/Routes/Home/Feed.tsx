@@ -1,3 +1,4 @@
+import FlipMove from 'react-flip-move'
 import CreateIcon from '@mui/icons-material/Create'
 import CropOriginalIcon from '@mui/icons-material/CropOriginal'
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions'
@@ -48,9 +49,11 @@ const Feed = () => {
       </div>
 
       {/* Posts */}
-      {posts.map((post: PostModel) => (
-        <Post key={post.id} post={post} />
-      ))}
+      <FlipMove>
+        {posts.map((post: PostModel) => (
+          <Post key={post.id} post={post} />
+        ))}
+      </FlipMove>
     </div>
   )
 }

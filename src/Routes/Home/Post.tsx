@@ -10,7 +10,7 @@ import { getElapsedTime } from '../../Utils'
 import './Post.scss'
 
 interface PostProps {
-  post: PostModel
+  readonly post: PostModel
 }
 
 const Post = forwardRef((props: PostProps, ref: LegacyRef<HTMLDivElement>) => {

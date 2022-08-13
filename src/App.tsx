@@ -2,10 +2,10 @@ import Auth from './Routes/Auth'
 import Home from './Routes/Home'
 import Loading from './Routes/Loading'
 
-import useAuthentication from './Hooks/useAuthentication'
+import useAuthObserver from './Hooks/useAuthObserver'
 
 const App = () => {
-  const { userFetched, authLoading } = useAuthentication()
+  const { userFetched, authLoading } = useAuthObserver()
 
   if (authLoading) return <Loading />
   else if (!userFetched) return <Auth />
