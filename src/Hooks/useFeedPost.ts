@@ -1,27 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Unsubscribe } from 'firebase/auth'
 
-import { Post } from '../Models/Post'
 import { selectUser } from '../Store/features/userSlice'
 import { addPost, fetchRealtimeData } from '../services/Post.service'
+import { selectPosts } from '../Store/features/postsSlice'
 
 const useFeedPost = () => {
+  const dispatch = useDispatch()
   const { displayName, email, photoURL } = useSelector(selectUser)
+  const { data: posts } = useSelector(selectPosts)
   const [newPostInput, setNewPostInput] = useState('')
-  const [posts, setPosts] = useState<Post[]>([])
   const unsubscribeRef = useRef<Unsubscribe>()
 
   // Listen For Realtime Data Changes
   useEffect(() => {
-    unsubscribeRef.current = fetchRealtimeData(setPosts)
+    unsubscribeRef.current = fetchRealtimeData(dispatch)
 
     return () => {
       if (unsubscribeRef.current) {
         unsubscribeRef.current()
       }
     }
-  }, [])
+  }, [dispatch])
 
   const sendPost = (event: React.FormEvent) => {
     event.preventDefault()

@@ -1,3 +1,4 @@
+import { Dispatch } from '@reduxjs/toolkit'
 import {
   addDoc,
   collection,
@@ -8,15 +9,16 @@ import {
 } from 'firebase/firestore'
 import { Post } from '../Models/Post'
 import { db } from '../services/Firebase.service'
+import { postsRequest } from '../Store/features/postsSlice'
 
-export const fetchRealtimeData = (setPosts: Function) => {
+export const fetchRealtimeData = (dispatch: Dispatch) => {
   const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'))
   const unsubscribe = onSnapshot(q, (snapshot) => {
     const newPostsData = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }))
-    setPosts(newPostsData)
+    dispatch(postsRequest(newPostsData))
   })
   return unsubscribe
 }
