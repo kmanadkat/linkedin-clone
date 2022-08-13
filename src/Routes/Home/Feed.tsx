@@ -13,7 +13,14 @@ import Post from './Post'
 import useFeedPost from '../../Hooks/useFeedPost'
 
 const Feed = () => {
-  const { newPostInput, setNewPostInput, sendPost, posts } = useFeedPost()
+  const {
+    newPostInput,
+    setNewPostInput,
+    sendPost,
+    posts,
+    reactToPost,
+    currentUser,
+  } = useFeedPost()
   return (
     <div className="feed">
       <div className="feed__inputContainer">
@@ -51,7 +58,12 @@ const Feed = () => {
       {/* Posts */}
       <FlipMove>
         {posts.map((post: PostModel) => (
-          <Post key={post.id} post={post} />
+          <Post
+            key={post.id}
+            post={post}
+            reactToPost={reactToPost}
+            currentUser={currentUser}
+          />
         ))}
       </FlipMove>
     </div>

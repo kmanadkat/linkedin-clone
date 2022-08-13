@@ -37,6 +37,16 @@
     line-height: 1.55em;
   }
 
+  &__body .reactions {
+    font-size: 0.85rem;
+    color: gray;
+    margin-top: 1rem;
+    cursor: pointer;
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
   &__buttons {
     display: flex;
     justify-content: space-evenly;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Unsubscribe } from 'firebase/auth'
 
 import { selectUser } from '../Store/features/userSlice'
-import { addPost, fetchRealtimeData } from '../services/Post.service'
+import { addPost, fetchRealtimeData, likePost } from '../services/Post.service'
 import { selectPosts } from '../Store/features/postsSlice'
 
 const useFeedPost = () => {
@@ -27,15 +27,27 @@ const useFeedPost = () => {
   const sendPost = (event: React.FormEvent) => {
     event.preventDefault()
     addPost({
-      displayName: displayName,
+      displayName,
       subtitle: email,
       message: newPostInput,
-      photoUrl: photoURL,
+      photoURL,
+      likes: [],
     })
     setNewPostInput('')
   }
 
-  return { newPostInput, setNewPostInput, sendPost, posts }
+  const reactToPost = (postId: string) => {
+    likePost({ displayName, photoURL, subtitle: email }, postId)
+  }
+
+  return {
+    newPostInput,
+    setNewPostInput,
+    sendPost,
+    posts,
+    reactToPost,
+    currentUser: email,
+  }
 }
 
 export default useFeedPost

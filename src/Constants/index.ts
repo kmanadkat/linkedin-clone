@@ -15,10 +15,11 @@ export const POSTS: Post[] = [
   {
     id: '234sdfg',
     displayName: 'Krupesh Anadkat',
-    photoUrl: PROFILE_URL,
+    photoURL: PROFILE_URL,
     subtitle: 'Software Engineer',
     message:
       'Teams should adopt Typescript if the project codebase is growing and more number of contributors would participate.',
+    likes: [],
   },
 ]
 
