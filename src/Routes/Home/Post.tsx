@@ -13,13 +13,14 @@ import './Post.scss'
 
 interface PostProps {
   readonly post: PostModel
-  reactToPost: (postId: string) => void
   readonly currentUser: string
+  addLike: (postId: string) => void
+  removeLike: (postId: string) => void
 }
 
 const Post = forwardRef(
   (
-    { post, reactToPost, currentUser }: PostProps,
+    { post, addLike, removeLike, currentUser }: PostProps,
     ref: LegacyRef<HTMLDivElement>
   ) => {
     const { displayName, subtitle, message, photoURL, createdAt, id, likes } =
@@ -52,7 +53,7 @@ const Post = forwardRef(
 
         <div className="post__buttons">
           {!isPostLikeByUser && (
-            <div onClick={() => reactToPost(id ?? '')}>
+            <div onClick={() => addLike(id ?? '')}>
               <InputOption
                 Icon={ThumbUpOutlinedIcon}
                 title="Like"
@@ -61,7 +62,9 @@ const Post = forwardRef(
             </div>
           )}
           {isPostLikeByUser && (
-            <InputOption Icon={ThumbUpIcon} title="Liked" color={'#0a66c2'} />
+            <div onClick={() => removeLike(id ?? '')}>
+              <InputOption Icon={ThumbUpIcon} title="Liked" color={'#0a66c2'} />
+            </div>
           )}
           <InputOption Icon={SmsOutlinedIcon} title="Comment" color={'gray'} />
         </div>

@@ -9,6 +9,8 @@ import {
   doc,
   updateDoc,
   arrayUnion,
+  getDoc,
+  setDoc,
 } from 'firebase/firestore'
 import { Like, Post } from '../Models/Post'
 import { db } from '../services/Firebase.service'
@@ -39,4 +41,13 @@ export const likePost = async (reaction: Like, postId: string) => {
   await updateDoc(docRef, {
     likes: arrayUnion({ ...reaction, createdAt: createdAt }),
   })
+}
+
+export const unlikePost = async (userEmail: string, postId: string) => {
+  const docRef = doc(db, 'posts', postId)
+  const docData = await getDoc(docRef)
+  const post = docData.data() as Post
+  post.likes = post.likes.filter((like) => like.subtitle !== userEmail)
+
+  await setDoc(docRef, post)
 }

@@ -18,7 +18,8 @@ const Feed = () => {
     setNewPostInput,
     sendPost,
     posts,
-    reactToPost,
+    addLikeToPost,
+    removeLikeFromPost,
     currentUser,
   } = useFeedPost()
   return (
@@ -61,7 +62,8 @@ const Feed = () => {
           <Post
             key={post.id}
             post={post}
-            reactToPost={reactToPost}
+            addLike={addLikeToPost}
+            removeLike={removeLikeFromPost}
             currentUser={currentUser}
           />
         ))}
