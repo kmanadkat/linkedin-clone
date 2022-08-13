@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { signupUser } from '../Services/Auth.service'
+import { signupUser } from '../services/Auth.service'
 import { userSignup } from '../Store/features/userSlice'
 
 const useSignup = () => {

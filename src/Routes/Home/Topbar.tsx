@@ -9,7 +9,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import NavLink from './NavLink'
 
 import './Topbar.scss'
-import { logoutUser } from '../../Services/Auth.service'
+import { logoutUser } from '../../services/Auth.service'
 
 const Topbar = () => {
   return (

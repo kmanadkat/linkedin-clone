@@ -4,7 +4,7 @@ import { Unsubscribe } from 'firebase/auth'
 
 import { Post } from '../Models/Post'
 import { selectUser } from '../Store/features/userSlice'
-import { addPost, fetchRealtimeData } from '../Services/Post.service'
+import { addPost, fetchRealtimeData } from '../services/Post.service'
 
 const useFeedPost = () => {
   const { displayName, email, photoURL } = useSelector(selectUser)

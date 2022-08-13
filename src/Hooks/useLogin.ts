@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react'
-import { loginUser } from '../Services/Auth.service'
+import { loginUser } from '../services/Auth.service'
 
 const useLogin = () => {
   const [loginForm, setLoginForm] = useState({ email: '', password: '' })

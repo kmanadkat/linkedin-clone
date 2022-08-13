@@ -8,7 +8,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 
-import { auth } from './Firebase.service'
+import { auth } from '../services/Firebase.service'
 import { userLogin, userLogout } from '../Store/features/userSlice'
 import { Profile } from '../Models/Profile'
 import { SignupForm } from '../Models/Signup'

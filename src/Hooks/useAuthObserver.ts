@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Profile } from '../Models/Profile'
-import { authObserver } from '../Services/Auth.service'
+import { authObserver } from '../services/Auth.service'
 import { selectUser } from '../Store/features/userSlice'
 
 const useAuthObserver = () => {

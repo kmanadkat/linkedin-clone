@@ -7,7 +7,7 @@ import {
   serverTimestamp,
 } from 'firebase/firestore'
 import { Post } from '../Models/Post'
-import { db } from './Firebase.service'
+import { db } from '../services/Firebase.service'
 
 export const fetchRealtimeData = (setPosts: Function) => {
   const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'))
